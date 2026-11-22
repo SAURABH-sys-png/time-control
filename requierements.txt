@@ -1,0 +1,6 @@
+so in this at first we be installing up the 
+
+
+-> cmake ninja pkgconf
+openssl@3 cli11 googletest catch2 llvm gi ccache2 hyperfine qpdf
+
