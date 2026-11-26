@@ -44,6 +44,13 @@ lcoal daatabse of git me we have stored the files
 
 
 
+
+git comes with a few tools one of them is git config 
+
+
+
+
+
 Does What?
 
 store our every file in the db 
