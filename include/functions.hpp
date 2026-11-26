@@ -3,5 +3,3 @@
 #include <string_view>
 void explain(std::string_view note, std::filesystem::filesystem_error const &e);
 void init();
-
-void commit();
