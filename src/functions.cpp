@@ -41,16 +41,17 @@ void init() {
 }
 std::vector<std::string> arr_hashes;
 void commit() {
-  for (const auto &file :
-       std::filesystem::directory_iterator(std::filesystem::current_path())) {
-    std::string cmd = "openssl sha256 " + file.path().string(); // try both
-    std::system(cmd.c_str());
-    std::string hashed = "";
-    std::cin >> hashed;
-    arr_hashes.push_back(hashed);
+  for (std::filesystem::recursive_directory_iterator it(dot_git_fol_name), end;
+       it != end; ++it) {
+    if (!std::filesystem::is_directory(it->path())) {
+      arr_hashes.push_back(it->path().string());
+    }
   }
-  // to be removed
-  for (auto &str : arr_hashes) {
-    std::cout << str << "file" << std::endl;
+  for (auto &x : arr_hashes) {
+    std::string cmd = "openssl sha256 " + x + " > " + x + ".txt";
+    system(cmd.c_str());
   }
+
+  std::string kmd = "echo *";
+  system(kmd.c_str());
 }
