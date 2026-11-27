@@ -61,6 +61,19 @@ int main(int argc, char *argv[]) {
   // ----------------------------------------------------------------------------->
   // Commit command
   else if (cmd == "commit") {
+
+    // check for the initialiased the repo
+    bool has_init = 0;
+    for (const auto &file : std::filesystem::recursive_directory_iterator(
+             std::filesystem::current_path())) {
+      if (file.path() == std::filesystem::current_path() / ".time-machine")
+        has_init = 1;
+    }
+    if (!has_init) {
+      std::cout << "Do a git init" << std::endl;
+      return 1;
+    }
+
     // to be removed
     std::vector<std::string> temp_lsit;
     for (const auto &file : std::filesystem::recursive_directory_iterator(
